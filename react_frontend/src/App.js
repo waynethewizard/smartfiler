@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './App.css'; // make sure to import the css file
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/Navigation';
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -49,7 +50,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="logo">Smartfiler</h1>
+      <Navigation />
+      {/* <h1 className="logo">Smartfiler</h1> */}
       <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
         <p>Drop a CSV file here, or click to select a file</p>
