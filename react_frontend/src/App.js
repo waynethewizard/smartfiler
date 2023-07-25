@@ -49,6 +49,7 @@ function App() {
     },
   });
 
+  // set state to toggle loggedIn?
   function isLoggedIn() {
     console.log("hello")
   }
