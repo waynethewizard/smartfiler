@@ -1,4 +1,6 @@
-# smartfiler
+# smartfiler.io
+
+Taking on flatfile.io
 
 <img width="1025" alt="Screenshot 2023-07-25 at 1 21 32 PM" src="https://github.com/wsankey/smartfiler/assets/3376159/f8204fde-65d2-48b0-8d70-bd03b2a56014">
 
