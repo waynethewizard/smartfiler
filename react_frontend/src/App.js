@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import './App.css'; // make sure to import the css file
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
-import Login from './components/Login';
+import LoginButton from './components/LoginButton';
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -49,13 +49,18 @@ function App() {
     },
   });
 
+  function isLoggedIn() {
+    console.log("hello")
+  }
+
   return (
     <div className="App">
       <div className="p-3 d-flex justify-content-between" style={{ backgroundColor: "#004953" }}>
         <Navigation className="me-auto" />
-        <Login className="ms-auto" />
+        <LoginButton isLoggedIn={isLoggedIn} className="ms-auto" />
       </div>
       {/* <h1 className="logo">Smartfiler</h1> */}
+      {/* RENDER IF LOGGED IN */}
       <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
         <p>Drop a CSV file here, or click to select a file</p>
