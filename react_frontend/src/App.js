@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import './App.css'; // make sure to import the css file
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
+import Login from './components/Login';
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -50,7 +51,10 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation />
+      <div className="p-3 d-flex justify-content-between" style={{ backgroundColor: "#004953" }}>
+        <Navigation className="me-auto" />
+        <Login className="ms-auto" />
+      </div>
       {/* <h1 className="logo">Smartfiler</h1> */}
       <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
         <input {...getInputProps()} />

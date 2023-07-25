@@ -5,8 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 function Navigation() {
 
     return (
-        <Navbar bg="#004953" data-bs-theme="dark" >
-            <Container>
+        <Navbar bg="#004953" data-bs-theme="dark" className="justify-content-end" >
+            <Container className="d-flex justify-content-end">
                 <Navbar.Brand href="#home">Smartfiler</Navbar.Brand>
                 <Nav className="justify-content-end">
                     <Nav.Link href="#home">Home</Nav.Link>
@@ -14,12 +14,7 @@ function Navigation() {
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
                 </Nav>
             </Container>
-            <Container>
-                <Nav className="justify-content-end">
-                    <Nav.Link href="#login">Login</Nav.Link>
-                    <Nav.Link href="#login">Sign Up</Nav.Link>
-                </Nav>
-            </Container>
+            
         </Navbar>
     )
 }
