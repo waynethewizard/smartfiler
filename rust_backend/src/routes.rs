@@ -1,5 +1,4 @@
 use rocket::Data;
-use rocket::http::Status;
 use rocket::response::status::Custom;
 use rocket::serde::json::Json;
 use rocket::data::ByteUnit;
@@ -7,8 +6,22 @@ use tokio::io::AsyncReadExt;
 use std::collections::HashMap;
 
 use crate::models::ChatGPTResponse;
+use crate::models::LoginRequest;
 
+// User information
+#[post("/login", format = "json", data = "<login_request>")]
+pub fn login(login_request: Json<LoginRequest>) -> &'static str {
+    println!("Username: {}", login_request.username);
+    println!("Password: {}", login_request.password);
+    "Logged in"
+}
 
+#[options("/login")]
+pub fn options_login() -> CORS<&'static str> {
+    CORS("")
+}
+
+// File uploading
 #[post("/", data = "<data>")]
 pub async fn upload(data: Data<'_>) -> Result<Json<Vec<HashMap<String, String>>>, Custom<String>> {
     // Read the data into a Vec<u8>
@@ -37,11 +50,12 @@ pub async fn upload(data: Data<'_>) -> Result<Json<Vec<HashMap<String, String>>>
     Ok(Json(records))
 }
 
+
+// ChatGPT Responses
 fn map_to_chatgpt_prompt(records: Vec<HashMap<String, String>>) -> String {
     // create the prompt string here
     "".to_string()
 }
-
 
 #[post("/analyze", format = "json", data = "<records>")]
 pub async fn analyze(records: Json<Vec<HashMap<String, String>>>) -> Result<Json<ChatGPTResponse>, Status> {
@@ -60,7 +74,30 @@ pub async fn analyze(records: Json<Vec<HashMap<String, String>>>) -> Result<Json
 }
 
 
+// Other
 #[options("/")]
 pub fn options() -> &'static str {
     ""
+}
+
+use rocket::response::{self, Responder, Response};
+use rocket::http::Status;
+use rocket::Request;
+use rocket::http::Header;
+
+pub struct CORS<R>(pub R);
+
+#[rocket::async_trait]
+impl<'r, R: Responder<'r, 'static>> Responder<'r, 'static> for CORS<R> {
+    fn respond_to(self, req: &'r Request<'_>) -> response::Result<'static> {
+        let mut res = Response::build();
+
+        res.merge(self.0.respond_to(req)?);
+        res.header(Header::new("Access-Control-Allow-Origin", "*"));
+        res.header(Header::new("Access-Control-Allow-Methods", "POST, GET, PATCH, OPTIONS"));
+        res.header(Header::new("Access-Control-Allow-Headers", "*"));
+        res.header(Header::new("Access-Control-Allow-Credentials", "true"));
+        
+        res.ok()
+    }
 }

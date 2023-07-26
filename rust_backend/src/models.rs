@@ -1,5 +1,13 @@
 use serde::{Deserialize, Serialize};
 
+// User information
+#[derive(serde::Deserialize)]
+pub struct LoginRequest {
+    pub username: String,
+    pub password: String,
+}
+
+// ChatGPT Responses
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ChatGPTResponse {
     id: String,
