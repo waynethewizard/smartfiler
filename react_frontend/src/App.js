@@ -72,7 +72,7 @@ function App() {
                 {uploadStatus && <p>{uploadStatus}</p>}
               </div>
               ) : (
-               <div>Login!</div>
+               <div >Login to begin</div>
               )
 
       }        
