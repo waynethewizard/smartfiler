@@ -8,6 +8,7 @@ import LoginButton from './components/LoginButton';
 function App() {
   const [isActive, setIsActive] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const {getRootProps, getInputProps} = useDropzone({
     accept: 'text/csv',
@@ -49,24 +50,39 @@ function App() {
     },
   });
 
+  const handleLogin = () => {
+    setLoggedIn(true)
+    console.log(loggedIn)
+  }
+
   return (
     <div className="App">
       <div className="p-3 d-flex justify-content-between" style={{ backgroundColor: "#004953" }}>
         <Navigation className="me-auto" />
-        <LoginButton className="ms-auto" />
+        <LoginButton handleLogin={handleLogin} className="ms-auto" />
+        {console.log(isActive)}
       </div>
       {/* <h1 className="logo">Smartfiler</h1> */}
       {/* RENDER IF LOGGED IN */}
-      <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
-        <input {...getInputProps()} />
-        <p>Drop a CSV file here, or click to select a file</p>
-        {uploadStatus && <p>{uploadStatus}</p>}
-      </div>
+      { loggedIn ? 
+              (
+              <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
+                <input {...getInputProps()} />
+                <p>Drop a CSV file here, or click to select a file</p>
+                {uploadStatus && <p>{uploadStatus}</p>}
+              </div>
+              ) : (
+               <div>Login!</div>
+              )
+
+      }        
       <div className="data-display">
         {/* Here you can render your data */}
+        data
       </div>
       <footer className="footer">
         {/* Include your footer content here */}
+        footer
       </footer>
     </div>
   );

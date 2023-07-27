@@ -5,21 +5,25 @@ import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
-const LoginButton = () => {
+const LoginButton = ({handleLogin}) => {
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false);
+        handleLogin();
+    }
+
+    // add form and call for logging in/signing
     
     return (
-
         <div>
-                <Navbar bg="#004953" data-bs-theme="dark" className="justify-content-end" >
-                    <Container className="d-flex justify-content-start">
-                        <Nav >
-                            <Nav.Link href="#login" onClick={handleShow} >Login</Nav.Link>
-                        </Nav>
-                    </Container>
-                </Navbar>
+            <Navbar bg="#004953" data-bs-theme="dark" className="justify-content-end" >
+                <Container className="d-flex justify-content-start">
+                    <Nav >
+                        <Nav.Link href="#login" onClick={handleShow} >Login</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
             <div>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
@@ -36,7 +40,7 @@ const LoginButton = () => {
                     </Modal.Footer>
                 </Modal>
             </div>
-    </div>
+        </div>
         
     )
 
