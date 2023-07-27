@@ -1,3 +1,4 @@
 rust_backend/target/*
 /target
 .DS_Store
+.env
