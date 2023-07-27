@@ -31,8 +31,9 @@
 }
 
 .logo {
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 50px;
+    text-align: left;
 }
 
 .dropzone.active, .data-display.active {
