@@ -49,16 +49,11 @@ function App() {
     },
   });
 
-  // set state to toggle loggedIn?
-  function isLoggedIn() {
-    console.log("hello")
-  }
-
   return (
     <div className="App">
       <div className="p-3 d-flex justify-content-between" style={{ backgroundColor: "#004953" }}>
         <Navigation className="me-auto" />
-        <LoginButton isLoggedIn={isLoggedIn} className="ms-auto" />
+        <LoginButton className="ms-auto" />
       </div>
       {/* <h1 className="logo">Smartfiler</h1> */}
       {/* RENDER IF LOGGED IN */}
