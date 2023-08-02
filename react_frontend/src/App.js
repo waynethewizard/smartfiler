@@ -70,8 +70,8 @@ function App() {
           (
             <LogoutButton handleLogout={handleLogout}/>
           ) : (
-            <div>
-            <LoginButton handleLogin={handleLogin} className="ms-auto" /> 
+            <div className="d-flex justify-content-center align-items-center">
+            <LoginButton handleLogin={handleLogin} className="me-2" /> 
             <SignUpButton />
             </div>
           )
