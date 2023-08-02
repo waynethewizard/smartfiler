@@ -4,6 +4,8 @@ import './App.css'; // make sure to import the css file
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
 import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LougoutButton';
+import SignUpButton from './components/SignUpButton';
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -52,29 +54,41 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true)
-    console.log(loggedIn)
+    // console.log(loggedIn)
+  }
+
+  const handleLogout = () => {
+    setLoggedIn(false)
+    console.log("loggedout", loggedIn)
   }
 
   return (
     <div className="App">
       <div className="p-3 d-flex justify-content-between" style={{ backgroundColor: "#004953" }}>
         <Navigation className="me-auto" />
-        <LoginButton handleLogin={handleLogin} className="ms-auto" />
-        {console.log(isActive)}
+        { loggedIn ?
+          (
+            <LogoutButton handleLogout={handleLogout}/>
+          ) : (
+            <div>
+            <LoginButton handleLogin={handleLogin} className="ms-auto" /> 
+            <SignUpButton />
+            </div>
+          )
+        }
       </div>
       {/* <h1 className="logo">Smartfiler</h1> */}
       {/* RENDER IF LOGGED IN */}
       { loggedIn ? 
-              (
-              <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
-                <input {...getInputProps()} />
-                <p>Drop a CSV file here, or click to select a file</p>
-                {uploadStatus && <p>{uploadStatus}</p>}
-              </div>
-              ) : (
-               <div >Login to begin</div>
-              )
-
+        (
+          <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>
+            <input {...getInputProps()} />
+            <p>Drop a CSV file here, or click to select a file</p>
+            {uploadStatus && <p>{uploadStatus}</p>}
+          </div>
+        ) : (
+          <div >Login to begin</div>
+        )
       }        
       <div className="data-display">
         {/* Here you can render your data */}

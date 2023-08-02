@@ -1,11 +1,11 @@
 import Button from 'react-bootstrap/Button';
 
-const SignUpButton = () => {
+const LogoutButton = ({handleLogout}) => {
     
     return (
         <div>
             <div>
-                <Button >Sign Up </Button>
+                <Button onClick={handleLogout}> Logout </Button>
             </div>
         </div>
         
@@ -13,4 +13,4 @@ const SignUpButton = () => {
 
 }
 
-export default SignUpButton
+export default LogoutButton

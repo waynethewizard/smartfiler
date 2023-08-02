@@ -23,7 +23,6 @@ const LoginButton = ({handleLogin}) => {
                 <Container className="d-flex justify-content-start">
                     <Nav >
                         <Nav.Link href="#login" onClick={handleShow} >Login </Nav.Link>
-                        <SignUpButton />
                     </Nav>
                 </Container>
             </Navbar>
