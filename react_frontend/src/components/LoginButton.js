@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
+import SignUpButton from './SignUpButton';
 
 const LoginButton = ({handleLogin}) => {
     const [show, setShow] = useState(false);
@@ -21,7 +22,8 @@ const LoginButton = ({handleLogin}) => {
             <Navbar bg="#004953" data-bs-theme="dark" className="justify-content-end" >
                 <Container className="d-flex justify-content-start">
                     <Nav >
-                        <Nav.Link href="#login" onClick={handleShow} >Login</Nav.Link>
+                        <Nav.Link href="#login" onClick={handleShow} >Login </Nav.Link>
+                        <SignUpButton />
                     </Nav>
                 </Container>
             </Navbar>
