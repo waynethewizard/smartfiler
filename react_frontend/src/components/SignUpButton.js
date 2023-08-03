@@ -8,7 +8,6 @@ const SignUpButton = () => {
                 <Button >Sign Up </Button>
             </div>
         </div>
-        
     )
 
 }

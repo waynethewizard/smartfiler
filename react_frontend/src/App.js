@@ -54,12 +54,10 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true)
-    // console.log(loggedIn)
   }
 
   const handleLogout = () => {
     setLoggedIn(false)
-    console.log("loggedout", loggedIn)
   }
 
   return (
@@ -77,8 +75,6 @@ function App() {
           )
         }
       </div>
-      {/* <h1 className="logo">Smartfiler</h1> */}
-      {/* RENDER IF LOGGED IN */}
       { loggedIn ? 
         (
           <div {...getRootProps()} className={`dropzone ${isActive ? 'active' : ''}`}>

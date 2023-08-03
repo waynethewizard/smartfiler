@@ -8,7 +8,6 @@ const LogoutButton = ({handleLogout}) => {
                 <Button onClick={handleLogout}> Logout </Button>
             </div>
         </div>
-        
     )
 
 }
